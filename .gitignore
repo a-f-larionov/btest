@@ -1,7 +1,10 @@
 /.idea/
 
-/auth/
-/bitrix/
+/auth
+/bitrix
+!/bitrix/admin/
+
+
 /content/
 /e-store/
 /examples/
