@@ -1,7 +1,4 @@
-<?
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-?>
-
+<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php'); ?>
 
     <!--HELP::HUB_TITLE-->
     <div class="page-header page-header_full" id="hub_260">

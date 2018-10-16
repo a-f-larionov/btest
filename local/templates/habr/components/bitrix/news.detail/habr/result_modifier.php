@@ -1,13 +1,5 @@
 <?php
 
-
-//var_dump($arResult);
-
-foreach ($arResult as $key => $value) {
-//    echo "$key $value<br><br>";
-}
-
-
 // Формируем данные автора
 $cDBResult = CUser::GetList(
     $by = 'timestamp_x',

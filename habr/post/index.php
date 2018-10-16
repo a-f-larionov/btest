@@ -1,14 +1,10 @@
-<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-
-?>
-
+<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php'); ?>
 
 
 <!--HELP::LIST AND ADVERTISE-->
 <div class="column-wrapper column-wrapper_tabs js-sticky-wrapper">
 
     <div class="content_left js-content_left">
-
 
         <?$APPLICATION->IncludeComponent(
             "bitrix:news.detail",
