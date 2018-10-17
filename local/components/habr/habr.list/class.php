@@ -50,9 +50,9 @@ class CHabrListDemo extends CBitrixComponent
         $arOrder = ['DATE_CREATE_UNIX' => 'ASC',];
         $arFilter = ['IBLOCK_CODE' => 'IBLOCK_CODE_HABR'];
 
-        if (isset($_GET['HABR_FILTER_RATING'])) {
+        if (isset($_GET['FILTER_TOP'])) {
 
-            $arFilter['>=PROPERTY_U_RATING_SUMM'] = (int)$_GET['HABR_FILTER_RATING'];
+            $arFilter['>=PROPERTY_U_RATING_SUMM'] = (int)$_GET['FILTER_TOP'];
         }
 
         $arSelectFields = [

@@ -29,6 +29,8 @@ class CHabrFilterDemo extends CBitrixComponent
          */
         $this->arResult["sUrlPath"] = GetPagePath(false, false);
 
+        $this->arResult['filters'] = [10, 25, 50, 100];
+
         $this->includeComponentTemplate();
     }
 }

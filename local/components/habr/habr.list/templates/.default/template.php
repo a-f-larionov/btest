@@ -23,7 +23,7 @@
 
 
                     <h2 class="post__title">
-                        <a href="/habr/post/?ELEMENT_ID=<?= $arItem['ID'] ?>" class="post__title_link">
+                        <a href="/post/<?= $arItem['ID'] ?>" class="post__title_link">
                             <?= $arItem['NAME'] ?>
                         </a>
                     </h2>
@@ -54,7 +54,7 @@
                         </div>
 
                         <a class="btn btn_x-large btn_outline_blue post__habracut-btn"
-                           href="/habr/post/?ELEMENT_ID=<?= $arItem['ID'] ?>">Читать дальше &rarr;</a>
+                           href="/post/<?= $arItem['ID'] ?>">Читать дальше &rarr;</a>
                     </div>
 
 

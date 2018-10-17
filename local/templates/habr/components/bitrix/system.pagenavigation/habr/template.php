@@ -5,7 +5,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 <?php
 $strNavQueryString = ($arResult["NavQueryString"] != ""
-    ? $arResult["NavQueryString"] . "&amp;" : "");
+    ? '?' . $arResult["NavQueryString"] . "&amp;" : "");
+// не используем query параметры
+$strNavQueryString = '';
+// удаляем page1_1 из url
+$arResult['sUrlPath'] = preg_replace("/page[0-9]_[0-9]\//", "", $arResult['sUrlPath']);
+
 ?>
 
 <div class="page__footer">
@@ -15,8 +20,8 @@ $strNavQueryString = ($arResult["NavQueryString"] != ""
             <? if ($arResult['NavPageNomer'] != $arResult['nStartPage']) { ?>
                 <a class="arrows-pagination__item-link arrows-pagination__item-link_prev"
                    id="previous_page"
-                   href="<?= $arResult['sUrlPath'] ?>?<?= $strNavQueryString ?>PAGEN_<?= $arResult['NavNum'] ?>=<?= $arResult['NavPageNomer']
-                   - 1 ?>"
+                   href="<?= $arResult['sUrlPath'] ?>page<?= $arResult['NavNum'] ?>_<?= $arResult['NavPageNomer']
+                   - 1 ?>/<?= $strNavQueryString ?>"
                    rel="">&larr; <span>сюда</span></a>
             <? } else { ?>
                 <span class="arrows-pagination__item-link">&larr;&nbsp;сюда</span>
@@ -28,8 +33,8 @@ $strNavQueryString = ($arResult["NavQueryString"] != ""
             <? if ($arResult['NavPageNomer'] != $arResult['nEndPage']) { ?>
                 <a class="arrows-pagination__item-link arrows-pagination__item-link_next"
                    id="next_page"
-                   href="<?= $arResult['sUrlPath'] ?>?<?= $strNavQueryString ?>PAGEN_<?= $arResult['NavNum'] ?>=<?= $arResult['NavPageNomer']
-                   + 1 ?>"
+                   href="<?= $arResult['sUrlPath'] ?>page<?= $arResult['NavNum'] ?>_<?= $arResult['NavPageNomer']
+                   + 1 ?>/<?= $strNavQueryString ?>"
                    rel=""><span>туда</span>&nbsp;&rarr;</a>
             <? } else { ?>
                 <span class="arrows-pagination__item-link">туда &rarr;</span>
@@ -45,7 +50,7 @@ $strNavQueryString = ($arResult["NavQueryString"] != ""
 
             <li class="toggle-menu__item toggle-menu__item_pagination">
 
-                <a href="<?= $arResult["sUrlPath"] ?>?<?= $strNavQueryString ?>PAGEN_<?= $arResult["NavNum"] ?>=1"
+                <a href="<?= $arResult["sUrlPath"] ?>?<?= $strNavQueryString ?>page<?= $arResult["NavNum"] ?>_1/<?= $strNavQueryString ?>"
                    class="toggle-menu__item-link toggle-menu__item-link_pagination toggle-menu__item-link_bordered"
                    title="Первая страница" rel="">
                     <span class="icon-svg icon-svg_arrow-first"><svg
@@ -66,7 +71,7 @@ $strNavQueryString = ($arResult["NavQueryString"] != ""
 
             <li class="toggle-menu__item toggle-menu__item_pagination">
 
-                <a href="<?= $arResult["sUrlPath"] ?>?<?= $strNavQueryString ?>PAGEN_<?= $arResult["NavNum"] ?>=<?= $pageI ?>"
+                <a href="<?= $arResult["sUrlPath"] ?>page<?= $arResult["NavNum"] ?>_<?= $pageI ?>/<?= $strNavQueryString ?>"
                    class="toggle-menu__item-link toggle-menu__item-link_pagination
                    <?= ($pageI == $arResult['NavPageNomer'])
                        ? 'toggle-menu__item-link_active' : '-' ?>
@@ -84,7 +89,7 @@ $strNavQueryString = ($arResult["NavQueryString"] != ""
 
                 <a title="Последняя страница"
                    class="toggle-menu__item-link toggle-menu__item-link_pagination toggle-menu__item-link_bordered"
-                   href="<?= $arResult["sUrlPath"] ?>?<?= $strNavQueryString ?>PAGEN_<?= $arResult["NavNum"] ?>=<?= $arResult['NavPageCount'] ?>"
+                   href="<?= $arResult["sUrlPath"] ?>page<?= $arResult["NavNum"] ?>_<?= $arResult['NavPageCount'] ?>/<?= $strNavQueryString ?>"
                    rel="">
               <span class="icon-svg icon-svg_arrow-last"><svg class="icon-svg"
                                                               width="28"
