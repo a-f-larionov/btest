@@ -3,6 +3,10 @@
     <ul class="content-list shortcuts_items">
 
 
+        <? if (count($arResult['ITEMS']) == 0) { ?>
+            <i>Ничего не найдено</i>
+        <? } ?>
+
         <? foreach ($arResult['ITEMS'] as $arItem) { ?>
 
             <li class="content-list__item content-list__item_post shortcuts_item" id="post_<?= $arItem['ID'] ?>">
@@ -26,7 +30,7 @@
 
                     <ul class="post__hubs inline-list">
 
-                        <? foreach ($arItem['SECTIONS'] as $arSection) { ?>
+                        <? foreach ($arResult['SECTIONS'][$arItem['ID']] as $arSection) { ?>
                             <li class="inline-list__item inline-list__item_hub">
                                 <a href="https://habr.com/hub/<?= $arSection['NAME'] ?>/"
                                    class="inline-list__item-link hub-link " rel="nofollow"
@@ -68,14 +72,14 @@
                                     </button>
 
                                     <span class="voting-wjt__counter voting-wjt__counter_positive  js-score"
-                                          title="Общий рейтинг <?= $arItem['RATING_SUMMARY'] ?>: <?=$arItem['PROPERTY_U_RATING_UP_VALUE']?>&uarr; и &darr;<?= $arItem['PROPERTY_U_RATING_DOWN_VALUE'] ?>">
-                                    <? if ($arItem['RATING_SUMMARY'] > 0) { ?>
+                                          title="Общий рейтинг <?= $arItem['PROPERTY_U_RATING_SUMM_VALUE'] ?>: <?=$arItem['PROPERTY_U_RATING_UP_VALUE']?>&uarr; и &darr;<?= $arItem['PROPERTY_U_RATING_DOWN_VALUE'] ?>">
+                                    <? if ($arItem['PROPERTY_U_RATING_SUMM_VALUE'] > 0) { ?>
                                         +
                                     <? } ?>
-                                        <? if ($arItem['RATING_SUMMARY'] < 0) { ?>
+                                        <? if ($arItem['PROPERTY_U_RATING_SUMM_VALUE'] < 0) { ?>
 
                                         <? } ?>
-                                        <?= $arItem['RATING_SUMMARY'] ?>
+                                        <?= $arItem['PROPERTY_U_RATING_SUMM_VALUE'] ?>
                                 </span>
 
                                     <button type="button" class="btn voting-wjt__button " data-action="minus"
@@ -126,9 +130,10 @@
 
         <? } ?>
 
-
     </ul>
 
-    <?= $arResult['NAV_STRING'] ?>
+    <? if (count($arResult['ITEMS']) > 0) { ?>
+        <?= $arResult['NAV_STRING'] ?>
+    <? } ?>
 
 </div>

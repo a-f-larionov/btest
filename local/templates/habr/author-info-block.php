@@ -1,6 +1,6 @@
 <header class="post__meta">
 
-    <a href="http://test/bitrix/admin/user_edit.php?lang=ru&ID=<?= $AUTHOR['ID'] ?>"
+    <a href="/bitrix/admin/user_edit.php?lang=ru&ID=<?= $AUTHOR['ID'] ?>"
        class="post__user-info user-info"
        title="Автор публикации">
 
