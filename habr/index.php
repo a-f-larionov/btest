@@ -77,7 +77,10 @@
             $APPLICATION->IncludeComponent(
                 "habr:habr.list",
                 "",
-                []
+                [
+                    'CACHE_TIME' => 123,
+                    'CACHE_TYPE' => 'Y',
+                ]
             );
             ?>
 

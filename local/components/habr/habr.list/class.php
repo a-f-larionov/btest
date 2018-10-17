@@ -23,8 +23,10 @@ class CHabrListDemo extends CBitrixComponent
      */
     public function executeComponent()
     {
-        if ($this->startResultCache()) {
 
+        if ($this->startResultCache(false, $_GET)) {
+
+            sleep(2);   // эмуляция долгих не кэшированных данных
             $items = $this->loadItems();
 
             $authors = $this->loadAuthors(array_column($items, 'CREATED_BY'));
@@ -34,6 +36,8 @@ class CHabrListDemo extends CBitrixComponent
             $this->arResult['ITEMS'] = $items;
             $this->arResult['AUTHORS'] = $authors;
             $this->arResult['SECTIONS'] = $sections;
+
+            $this->EndResultCache();
         }
 
         $this->includeComponentTemplate();
